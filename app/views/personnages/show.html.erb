@@ -1,0 +1,22 @@
+<h2>Personnage : <%= @hash_github['name'] %></h2>
+<p> Classe : <%= @hash_github['personnage_class'] %></p>
+<p> Niveau : <%= @hash_github['niveau'] %></p>
+
+<p> Inventaire : </p>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Statistique Principale</th>
+        <th>Statistique Secondaire</th>
+        <th>Rareté</th>
+        <th></th>
+    </tr>
+    <% @hash_github['objets'].each do |item| %>
+        <tr>
+        <td><%= item['name'] %></td>
+        <td><%= item['stat1'] %></td>
+        <td><%= item['stat2'] %></td>
+        <td><%= item['rarety'] %></td>
+        </tr>
+    <% end %>
+</table>

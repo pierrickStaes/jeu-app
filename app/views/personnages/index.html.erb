@@ -1,0 +1,27 @@
+<h1> LE MMORPG DE L'ANNEE : </h1>
+
+<h2> Les personnages du serveur : </h2>
+ 
+<table>
+  <tr>
+    <th>Nom du personnage : </th>
+    <th>Classe : </th>
+    <th>Niveau : </th>
+    <th>Date de création : </th>
+    <th></th>
+  </tr>
+ 
+  <% @hash_github.each do |personnage| %>
+    <tr>
+      <td><%= personnage['name'] %></td>
+      <td><%= personnage['personnage_class'] %></td>
+      <td><%= personnage['niveau'] %></td>
+      <td><%= personnage['created_at'] %></td>
+      <td><%= link_to 'Show', personnages_path(personnage) %></td>
+      <td><%= link_to 'Update', edit_personnages_path(personnage) %></td>
+      <td><%= link_to "Delete", personnages_path(personnage), method: :delete, data: { confirm: "Are you sure ?"} %></td>
+    </tr>
+  <% end %>
+
+  <p><%= link_to 'Create new', new_personnages_path %><p>
+</table>

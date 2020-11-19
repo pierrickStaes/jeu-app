@@ -1,0 +1,9 @@
+<%= form_for(@personnage) do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :niveau %>
+    <%= form.number_field :niveau %>
+    <%= form.label :personnage_class %>
+    <%= form.text_field :personnage_class %>
+    <%= form.submit %>
+<% end %>
