@@ -3,6 +3,7 @@
 <p> Niveau : <%= @hash_github['niveau'] %></p>
 
 <p> Inventaire : </p>
+<p><%= link_to 'Create new objet', new_personnages_objet_path(@hash_github) %><p>
 <table>
     <tr>
         <th>Nom</th>
@@ -17,6 +18,10 @@
         <td><%= item['stat1'] %></td>
         <td><%= item['stat2'] %></td>
         <td><%= item['rarety'] %></td>
+        <td><%= link_to 'Update', edit_personnages_objet_path(item['id'], "persoID"=>@hash_github['id'], "item" => item) %></td>
+        <td><%= link_to "Delete", personnages_objet_path(item['id'], "persoID"=>@hash_github['id']), method: :delete, data: { confirm: "Are you sure ?"} %></td>
         </tr>
     <% end %>
 </table>
+
+<p><%= link_to 'Go back to the list', root_path %><p>

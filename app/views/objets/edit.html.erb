@@ -1,0 +1,12 @@
+<%= form_with method: :patch,  url: personnages_objet_path(@item["id"],"idPerso", "item") do %>
+  <%= label_tag("item[name]", "Nom :") %>
+  <%= text_field_tag("item[name]", @item["name"]) %>
+  <%= label_tag("item[stat1]", "Statistique principale :") %>
+  <%= number_field_tag("item[stat1]", @item["stat1"]) %>
+  <%= label_tag("item[stat2]", "Statistique secondaire :") %>
+  <%= number_field_tag("item[stat2]", @item["stat2"]) %>
+  <%= label_tag("item[rarety]", "Rareté :") %>
+  <%= text_field_tag("item[rarety]", @item["rarety"]) %>
+  <%= hidden_field_tag("idPerso" , @persoID) %>
+  <%= submit_tag("Update") %>
+<% end %>

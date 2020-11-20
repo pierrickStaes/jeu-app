@@ -1,0 +1,12 @@
+<%= form_with method: :post,  url: personnages_objets_path("item","id") do %>
+  <%= label_tag("item[name]", "Nom :") %>
+  <%= text_field_tag("item[name]") %>
+  <%= label_tag("item[stat1]", "Statistique principale :") %>
+  <%= number_field_tag("item[stat1]") %>
+  <%= label_tag("item[stat2]", "Statistique secondaire :") %>
+  <%= number_field_tag("item[stat2]") %>
+  <%= label_tag("item[rarety]", "Rareté :") %>
+  <%= text_field_tag("item[rarety]") %>
+  <%= hidden_field_tag("id" , @personnage["id"]) %>
+  <%= submit_tag("Create") %>
+<% end %>

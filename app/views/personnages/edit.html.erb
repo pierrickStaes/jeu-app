@@ -1,9 +1,10 @@
-<%= form_for(@personnage) do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    <%= form.label :niveau %>
-    <%= form.number_field :niveau %>
-    <%= form.label :personnage_class %>
-    <%= form.text_field :personnage_class %>
-    <%= form.submit %>
+<%= form_with method: :patch,  url: personnages_path(@personnage["id"],"pseudo") do %>
+  <%= label_tag("pseudo[name]", "Nom:") %>
+  <%= text_field_tag("pseudo[name]", @personnage["name"]) %>
+  <%= label_tag("pseudo[niveau]", "Niveau:") %>
+  <%= number_field_tag("pseudo[niveau]", @personnage["niveau"]) %>
+  <%= label_tag("pseudo[personnage_class]", "Classe:") %>
+  <%= text_field_tag("pseudo[personnage_class]", @personnage["personnage_class"]) %>
+  <%= hidden_field_tag("pseudo[id]" , @personnage["id"]) %>
+  <%= submit_tag("Update") %>
 <% end %>
