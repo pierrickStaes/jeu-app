@@ -10,6 +10,7 @@ class ObjetsController < ApplicationController
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Post.new(url.path, 'Content-Type' => 'application/json')
         req.body = @item.to_json
+        http.use_ssl = (url.scheme == "https")
         res = http.request(req)
         logger.debug @item
         logger.debug @id
@@ -31,6 +32,7 @@ class ObjetsController < ApplicationController
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Patch.new(url.path, 'Content-Type' => 'application/json')
         req.body = @item.to_json
+        http.use_ssl = (url.scheme == "https")
         res = http.request(req)
         redirect_to personnages_path("id"=>@idPerso)
     end
@@ -39,6 +41,7 @@ class ObjetsController < ApplicationController
         url = URI("https://jeu-api.herokuapp.com/api/v1/personnages/"+params['persoID']+"/objets/"+params['id'])
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Delete.new(url.path)
+        http.use_ssl = (url.scheme == "https")
         res = http.request(req)
         redirect_to personnages_path("id"=>params['persoID'])
     end

@@ -14,9 +14,9 @@ class PersonnagesController < ApplicationController
         url = URI("https://jeu-api.herokuapp.com/api/v1/personnages")
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Post.new(url.path, 'Content-Type' => 'application/json')
+        http.use_ssl = (url.scheme == "https")
         req.body = @personnage.to_json
         res = http.request(req)
-        logger.debug @personnage
         redirect_to root_path
     end
 
@@ -42,14 +42,14 @@ class PersonnagesController < ApplicationController
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Patch.new(url.path, 'Content-Type' => 'application/json')
         req.body = @personnage.to_json
+        http.use_ssl = (url.scheme == "https")
         res = http.request(req)
         logger.debug @personnage
         redirect_to personnages_path(@personnage)
     end
 
     def destroy
-        url = URI.parse("https://jeu-api.herokuapp.com")
-        url.port = 3000
+        url = URI("https://jeu-api.herokuapp.com")
         http = Net::HTTP.new(url.host, url.port).delete("/api/v1/personnages/" + params['id'])
         redirect_to root_path
     end
