@@ -6,7 +6,7 @@ class ObjetsController < ApplicationController
     def create
         @item = params[:item].to_enum.to_h
         @id = params[:id]
-        url = URI("http://localhost:3000/api/v1/personnages/"+@id+"/objets")
+        url = URI("https://jeu-api.herokuapp.com/api/v1/personnages/"+@id+"/objets")
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Post.new(url.path, 'Content-Type' => 'application/json')
         req.body = @item.to_json
@@ -27,7 +27,7 @@ class ObjetsController < ApplicationController
         @idItem = params[:id]
         logger.debug @item
         logger.debug @idPerso
-        url = URI("http://localhost:3000/api/v1/personnages/"+@idPerso+"/objets/"+@idItem)
+        url = URI("https://jeu-api.herokuapp.com/api/v1/personnages/"+@idPerso+"/objets/"+@idItem)
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Patch.new(url.path, 'Content-Type' => 'application/json')
         req.body = @item.to_json
@@ -36,7 +36,7 @@ class ObjetsController < ApplicationController
     end
 
     def destroy
-        url = URI("http://localhost:3000/api/v1/personnages/"+params['persoID']+"/objets/"+params['id'])
+        url = URI("https://jeu-api.herokuapp.com/api/v1/personnages/"+params['persoID']+"/objets/"+params['id'])
         http = Net::HTTP.new(url.host, url.port)
         req = Net::HTTP::Delete.new(url.path)
         res = http.request(req)
