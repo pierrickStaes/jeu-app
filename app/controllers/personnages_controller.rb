@@ -4,7 +4,11 @@ class PersonnagesController < ApplicationController
     require 'net/http'
     require 'uri'
     def index
-        url = "https://jeu-api.herokuapp.com/api/v1/personnages"
+        if params[:query].present?
+			url = "https://jeu-api.herokuapp.com/api/v1/personnages?query="+ params[:query]
+		  else
+			url = "https://jeu-api.herokuapp.com/api/v1/personnages"
+		end
         github_answer = open(url).read
         @hash_github = JSON.parse(github_answer)
     end

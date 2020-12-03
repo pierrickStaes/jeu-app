@@ -1,7 +1,12 @@
 <h1> LE MMORPG DE L'ANNEE : </h1>
 
 <h2> Les personnages du serveur : </h2>
- 
+
+ <%= form_tag root_path, :method => 'get'  do %>
+   <%= text_field_tag :query, params[:query]%>
+   <%= submit_tag "Search", :name => nil  %>
+ <% end %>
+
 <table>
   <tr>
     <th>Nom du personnage : </th>
