@@ -1,0 +1,9 @@
+Yohan Girard
+    - API CRUD personnages + objets (imbriqué)
+    - Authentification + sécurisation
+    - Swagger documentation
+
+Pierrick Staes
+    - APP CRUD personnages + objets (imbriqué)
+    - Barre de recherche
+    - Mise en ligne Heroku
